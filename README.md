@@ -16,15 +16,15 @@ A fun and interactive background color changer web application built with vanill
 - ⌨️ **Keyboard Shortcuts**: Fast navigation with hotkeys
 - 📱 **Fully Responsive**: Works perfectly on all screen sizes
 - 🎭 **Smooth Transitions**: Beautiful color change animations
-- 🚫 **No Purple Colors**: Carefully curated palette excluding purple tones
+- 🎨 **15,000 Total Colors**: 5000 per type (Light, Dark, Vivid)
 
 ## Demo
 
 The background color changer provides multiple ways to change your screen color:
-- Random color generation (from all palettes)
-- Light color mode (soft, pastel colors)
-- Dark color mode (deep, rich colors)
-- Vivid color mode (bright, bold colors)
+- Random color generation (from 15,000 colors across all palettes)
+- Light color mode (5000 soft, pastel colors)
+- Dark color mode (5000 deep, rich colors)
+- Vivid color mode (5000 bright, bold colors)
 - 16 preset color buttons
 - Custom hex color input
 - Color history quick access with last 10 colors
@@ -37,10 +37,10 @@ The background color changer provides multiple ways to change your screen color:
 3. Use any of the methods below to change the background
 
 ### Button Controls
-- **🎲 Random Color**: Generate a random color from all available palettes (50+ colors)
-- **☀️ Light Color**: Generate a random light, pastel color (20 options)
-- **🌙 Dark Color**: Generate a random dark, deep color (15 options)
-- **✨ Vivid Color**: Generate a random bright, vibrant color (15 options)
+- **🎲 Random Color**: Generate a random color from all available palettes (15,000 colors)
+- **☀️ Light Color**: Generate a random light, pastel color (5000 options)
+- **🌙 Dark Color**: Generate a random dark, deep color (5000 options)
+- **✨ Vivid Color**: Generate a random bright, vibrant color (5000 options)
 - **📋 Copy Code**: Copy the current color hex code to clipboard
 
 ### Preset Colors
@@ -100,11 +100,11 @@ The application features a multi-color theme with solid colors (no purple, no gr
 - **Copy Button**: Green (#27ae60)
 - **Accent**: Teal (#16a085)
 
-**Generated Colors:**
-- **20+ Light Colors**: Pastels and soft tones
-- **15+ Dark Colors**: Deep blues, grays, and charcoals
-- **15+ Vivid Colors**: Bright, saturated colors
-- **Total: 50+ unique colors**
+**Generated Colors (Programmatically):**
+- **5000 Light Colors**: Pastels and soft tones (RGB: 180-255)
+- **5000 Dark Colors**: Deep blues, grays, charcoals, and rich tones (RGB: 0-79)
+- **5000 Vivid Colors**: Bright, saturated colors across full spectrum (RGB: 0-255)
+- **Total: 15,000 unique colors**
 
 ## Technologies Used
 
@@ -115,10 +115,11 @@ The application features a multi-color theme with solid colors (no purple, no gr
 ## Features in Detail
 
 ### Color Generation Modes
-- **Random**: Picks from all 50+ colors across all palettes
-- **Light**: 20 soft, pastel colors for gentle backgrounds
-- **Dark**: 15 deep colors perfect for dramatic effect
-- **Vivid**: 15 bright colors for bold, eye-catching backgrounds
+- **Random**: Picks from all 15,000 colors across all palettes
+- **Light**: 5000 soft, pastel colors for gentle backgrounds (RGB range 180-255)
+- **Dark**: 5000 deep colors perfect for dramatic effect (RGB range 0-79)
+- **Vivid**: 5000 bright colors for bold, eye-catching backgrounds (full RGB spectrum)
+- **Programmatic Generation**: Colors generated using prime number modulo operations for optimal distribution
 
 ### Smart Features
 - **Auto Text Contrast**: Text color automatically adjusts (white on dark, dark on light)
@@ -171,15 +172,16 @@ No dependencies or build process required!
 
 ## Customization
 
-### Adding More Colors
-Edit the color arrays in `script.js`:
+### Modifying Color Generation
+Colors are generated programmatically in `script.js`:
 
 ```javascript
-// Add to lightColors, darkColors, or vividColors
-const lightColors = [
-    { hex: '#yourcolor', name: 'Your Color Name' },
-    // ... more colors
-];
+// Modify generation functions to adjust color ranges
+function generateLightColors() {
+    // Adjust RGB ranges or generation count
+    const r = Math.floor(180 + (i * 7919) % 76); // 180-255
+    // ...
+}
 ```
 
 ### Changing UI Colors
@@ -245,8 +247,9 @@ Created by Sankrityayana
 
 ## Acknowledgments
 
-- Color palette carefully curated for visual comfort
-- No purple colors as per design specification
+- 15,000 colors generated programmatically using mathematical algorithms
+- Full color spectrum including purple tones
+- Prime number distribution for optimal color variety
 - Inspired by modern color picker tools
 - Built with accessibility and user experience in mind
 
