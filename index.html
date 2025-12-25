@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Color Changer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1 class="title">🎨 Background Color Changer</h1>
+            <p class="subtitle">Transform your screen with beautiful colors!</p>
+            
+            <div class="color-display">
+                <div class="color-code" id="colorCode">#f0f4f8</div>
+                <p class="color-name" id="colorName">Light Blue Gray</p>
+            </div>
+            
+            <div class="button-group">
+                <button class="btn btn-primary" onclick="changeToRandomColor()">
+                    🎲 Random Color
+                </button>
+                <button class="btn btn-secondary" onclick="changeToLightColor()">
+                    ☀️ Light Color
+                </button>
+                <button class="btn btn-success" onclick="copyColorCode()">
+                    📋 Copy Code
+                </button>
+            </div>
+            
+            <div class="preset-colors">
+                <h3>Preset Colors</h3>
+                <div class="color-grid">
+                    <button class="color-btn" style="background-color: #ffcccb;" onclick="changeBackgroundColor('#ffcccb', 'Light Red')"></button>
+                    <button class="color-btn" style="background-color: #ffebcd;" onclick="changeBackgroundColor('#ffebcd', 'Blanched Almond')"></button>
+                    <button class="color-btn" style="background-color: #fff4e6;" onclick="changeBackgroundColor('#fff4e6', 'Light Orange')"></button>
+                    <button class="color-btn" style="background-color: #fffacd;" onclick="changeBackgroundColor('#fffacd', 'Lemon Chiffon')"></button>
+                    <button class="color-btn" style="background-color: #e6f7ff;" onclick="changeBackgroundColor('#e6f7ff', 'Light Blue')"></button>
+                    <button class="color-btn" style="background-color: #d1f2eb;" onclick="changeBackgroundColor('#d1f2eb', 'Light Teal')"></button>
+                    <button class="color-btn" style="background-color: #d4edda;" onclick="changeBackgroundColor('#d4edda', 'Light Green')"></button>
+                    <button class="color-btn" style="background-color: #f8d7da;" onclick="changeBackgroundColor('#f8d7da', 'Light Pink')"></button>
+                    <button class="color-btn" style="background-color: #fff3cd;" onclick="changeBackgroundColor('#fff3cd', 'Light Yellow')"></button>
+                    <button class="color-btn" style="background-color: #cfe2ff;" onclick="changeBackgroundColor('#cfe2ff', 'Light Sky Blue')"></button>
+                    <button class="color-btn" style="background-color: #e7f5ff;" onclick="changeBackgroundColor('#e7f5ff', 'Alice Blue')"></button>
+                    <button class="color-btn" style="background-color: #fef5e7;" onclick="changeBackgroundColor('#fef5e7', 'Light Cream')"></button>
+                </div>
+            </div>
+            
+            <div class="custom-input">
+                <h3>Custom Color</h3>
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        id="customColor" 
+                        placeholder="Enter hex color (e.g., #ff6b6b)"
+                        maxlength="7"
+                    >
+                    <button class="btn btn-apply" onclick="applyCustomColor()">Apply</button>
+                </div>
+            </div>
+            
+            <div class="history">
+                <h3>Recent Colors</h3>
+                <div class="history-grid" id="historyGrid"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="toast" id="toast">Color code copied!</div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
