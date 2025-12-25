@@ -2,7 +2,7 @@
 let colorHistory = [];
 const maxHistory = 10;
 
-// Light color palette (200 colors - avoiding purple)
+// Light color palette (200+ colors including purple)
 const lightColors = [
     { hex: '#ffcccb', name: 'Light Red' }, { hex: '#ffebcd', name: 'Blanched Almond' }, { hex: '#fff4e6', name: 'Light Orange' }, { hex: '#fffacd', name: 'Lemon Chiffon' },
     { hex: '#e6f7ff', name: 'Light Blue' }, { hex: '#d1f2eb', name: 'Light Teal' }, { hex: '#d4edda', name: 'Light Green' }, { hex: '#f8d7da', name: 'Light Pink' },
@@ -53,10 +53,17 @@ const lightColors = [
     { hex: '#ffb3e3', name: 'Pink' }, { hex: '#ffa3dd', name: 'Hot Pink' }, { hex: '#ff99d1', name: 'Flamingo' }, { hex: '#ff8fc7', name: 'Carnation' },
     { hex: '#d6e4ff', name: 'Periwinkle Blue' }, { hex: '#c6daff', name: 'Sky Blue' }, { hex: '#b6d0ff', name: 'Baby Blue' }, { hex: '#cce7ff', name: 'Columbia Blue' },
     { hex: '#dcf0ff', name: 'Alice Blue' }, { hex: '#e6f5ff', name: 'Light Sky' }, { hex: '#f0f9ff', name: 'Azure Mist' }, { hex: '#d9f0f7', name: 'Powder Blue' },
-    { hex: '#c9e9f6', name: 'Light Blue' }, { hex: '#b9e3f5', name: 'Sky Blue' }, { hex: '#a9ddf4', name: 'Baby Blue' }, { hex: '#99d7f3', name: 'Cornflower' }
+    { hex: '#c9e9f6', name: 'Light Blue' }, { hex: '#b9e3f5', name: 'Sky Blue' }, { hex: '#a9ddf4', name: 'Baby Blue' }, { hex: '#99d7f3', name: 'Cornflower' },
+    { hex: '#e6e6fa', name: 'Lavender' }, { hex: '#dda0dd', name: 'Plum' }, { hex: '#ee82ee', name: 'Violet' }, { hex: '#da70d6', name: 'Orchid' },
+    { hex: '#e0b0ff', name: 'Mauve' }, { hex: '#d8bfd8', name: 'Thistle' }, { hex: '#dda0dd', name: 'Light Plum' }, { hex: '#e6d5e6', name: 'Pale Lavender' },
+    { hex: '#f3e5f5', name: 'Lavender Mist' }, { hex: '#e1d5e7', name: 'Pale Purple' }, { hex: '#d5c3e5', name: 'Light Violet' }, { hex: '#c9b1e3', name: 'Pale Lilac' },
+    { hex: '#bd9fe1', name: 'Wisteria' }, { hex: '#b18fdf', name: 'Light Purple' }, { hex: '#e8d5f2', name: 'Pale Mauve' }, { hex: '#f0e6fa', name: 'Lavender Blush' },
+    { hex: '#e4d5eb', name: 'Lilac' }, { hex: '#d9c4e6', name: 'Light Amethyst' }, { hex: '#ceb3e1', name: 'Pale Violet' }, { hex: '#c3a2dc', name: 'Light Orchid' },
+    { hex: '#b891d7', name: 'Medium Purple' }, { hex: '#e6d9f5', name: 'Pale Lavender' }, { hex: '#dcc8f0', name: 'Light Purple' }, { hex: '#d2b7eb', name: 'Pale Mauve' },
+    { hex: '#c8a6e6', name: 'Wisteria' }, { hex: '#be95e1', name: 'Light Violet' }, { hex: '#e9ddf5', name: 'Pale Purple' }, { hex: '#dfccf0', name: 'Lilac' }
 ];
 
-// Dark color palette (200 colors - avoiding purple)
+// Dark color palette (200+ colors including purple)
 const darkColors = [
     { hex: '#2c3e50', name: 'Dark Blue' }, { hex: '#34495e', name: 'Dark Gray' }, { hex: '#1a1a2e', name: 'Dark Navy' }, { hex: '#0f3460', name: 'Deep Blue' },
     { hex: '#16213e', name: 'Midnight Blue' }, { hex: '#1f4068', name: 'Navy Blue' }, { hex: '#1b262c', name: 'Dark Slate' }, { hex: '#0f4c75', name: 'Ocean Blue' },
@@ -100,7 +107,7 @@ const darkColors = [
     { hex: '#2b2d42', name: 'Space Cadet' }, { hex: '#2a2e3c', name: 'Dark Gray' }, { hex: '#292f36', name: 'Gunmetal' }, { hex: '#283044', name: 'Dark Blue' }
 ];
 
-// Vivid color palette (200 colors - avoiding purple)
+// Vivid color palette (200+ colors including purple)
 const vividColors = [
     { hex: '#ff6b6b', name: 'Coral Red' }, { hex: '#4ecdc4', name: 'Turquoise' }, { hex: '#45b7d1', name: 'Sky Blue' }, { hex: '#f7b731', name: 'Golden Yellow' },
     { hex: '#5f27cd', name: 'Royal Blue' }, { hex: '#00d2d3', name: 'Cyan' }, { hex: '#ff9ff3', name: 'Pink' }, { hex: '#54a0ff', name: 'Bright Blue' },
@@ -141,7 +148,16 @@ const vividColors = [
     { hex: '#00a6ff', name: 'Bright Blue' }, { hex: '#009cff', name: 'Azure' }, { hex: '#0092ff', name: 'Blue' }, { hex: '#0088ff', name: 'Vivid Blue' },
     { hex: '#007eff', name: 'Cobalt Blue' }, { hex: '#0074ff', name: 'Royal Blue' }, { hex: '#006aff', name: 'Electric Indigo' }, { hex: '#0060ff', name: 'Blue' },
     { hex: '#4169e1', name: 'Royal Blue' }, { hex: '#5578eb', name: 'Palatinate Blue' }, { hex: '#6a89cc', name: 'United Nations Blue' }, { hex: '#7e9bdf', name: 'Vista Blue' },
-    { hex: '#92adf2', name: 'Jordy Blue' }, { hex: '#a6bfff', name: 'Pale Azure' }, { hex: '#bad1ff', name: 'Baby Blue' }, { hex: '#cee3ff', name: 'Alice Blue' }
+    { hex: '#92adf2', name: 'Jordy Blue' }, { hex: '#a6bfff', name: 'Pale Azure' }, { hex: '#bad1ff', name: 'Baby Blue' }, { hex: '#cee3ff', name: 'Alice Blue' },
+    { hex: '#9b59b6', name: 'Amethyst' }, { hex: '#8e44ad', name: 'Wisteria' }, { hex: '#7d3c98', name: 'Deep Purple' }, { hex: '#6c3483', name: 'Royal Purple' },
+    { hex: '#5b2c6f', name: 'Dark Purple' }, { hex: '#884ea0', name: 'Purple' }, { hex: '#7d3c98', name: 'Deep Lilac' }, { hex: '#6c2dc7', name: 'Violet' },
+    { hex: '#8e44ad', name: 'Purple Heart' }, { hex: '#a569bd', name: 'Light Purple' }, { hex: '#bb8fce', name: 'Lavender Purple' }, { hex: '#d2b4de', name: 'Pale Purple' },
+    { hex: '#e8daef', name: 'Lavender' }, { hex: '#9b59b6', name: 'Amethyst' }, { hex: '#8b4cb8', name: 'Purple' }, { hex: '#7b3fba', name: 'Vivid Violet' },
+    { hex: '#6b32bc', name: 'Electric Purple' }, { hex: '#5b25be', name: 'Deep Purple' }, { hex: '#9966cc', name: 'Amethyst' }, { hex: '#aa66cc', name: 'Medium Purple' },
+    { hex: '#bb77dd', name: 'Lavender' }, { hex: '#cc88ee', name: 'Violet' }, { hex: '#dd99ff', name: 'Pale Violet' }, { hex: '#bf40bf', name: 'Vivid Magenta' },
+    { hex: '#cf52cf', name: 'Orchid' }, { hex: '#df64df', name: 'Fuchsia' }, { hex: '#ef76ef', name: 'Light Magenta' }, { hex: '#ff88ff', name: 'Pale Magenta' },
+    { hex: '#ba55d3', name: 'Medium Orchid' }, { hex: '#9370db', name: 'Medium Purple' }, { hex: '#8a2be2', name: 'Blue Violet' }, { hex: '#9932cc', name: 'Dark Orchid' },
+    { hex: '#9400d3', name: 'Dark Violet' }, { hex: '#a020f0', name: 'Purple' }, { hex: '#b030ff', name: 'Vivid Purple' }, { hex: '#c040ff', name: 'Electric Violet' }
 ];
 
 // All colors combined
