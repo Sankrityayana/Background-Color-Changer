@@ -26,6 +26,47 @@ const lightColors = [
     { hex: '#f5f5f5', name: 'White Smoke' }
 ];
 
+// Dark color palette (avoiding purple)
+const darkColors = [
+    { hex: '#2c3e50', name: 'Dark Blue' },
+    { hex: '#34495e', name: 'Dark Gray' },
+    { hex: '#1a1a2e', name: 'Dark Navy' },
+    { hex: '#0f3460', name: 'Deep Blue' },
+    { hex: '#16213e', name: 'Midnight Blue' },
+    { hex: '#1f4068', name: 'Navy Blue' },
+    { hex: '#1b262c', name: 'Dark Slate' },
+    { hex: '#0f4c75', name: 'Ocean Blue' },
+    { hex: '#1e3a5f', name: 'Royal Navy' },
+    { hex: '#222831', name: 'Charcoal' },
+    { hex: '#2d4059', name: 'Dark Denim' },
+    { hex: '#1c1c1c', name: 'Almost Black' },
+    { hex: '#3d3d3d', name: 'Dark Charcoal' },
+    { hex: '#0e4c92', name: 'Deep Ocean' },
+    { hex: '#1a3a52', name: 'Prussian Blue' }
+];
+
+// Vivid color palette (avoiding purple)
+const vividColors = [
+    { hex: '#ff6b6b', name: 'Coral Red' },
+    { hex: '#4ecdc4', name: 'Turquoise' },
+    { hex: '#45b7d1', name: 'Sky Blue' },
+    { hex: '#f7b731', name: 'Golden Yellow' },
+    { hex: '#5f27cd', name: 'Royal Blue' },
+    { hex: '#00d2d3', name: 'Cyan' },
+    { hex: '#ff9ff3', name: 'Pink' },
+    { hex: '#54a0ff', name: 'Bright Blue' },
+    { hex: '#48dbfb', name: 'Electric Blue' },
+    { hex: '#1dd1a1', name: 'Mint Green' },
+    { hex: '#10ac84', name: 'Green Sea' },
+    { hex: '#ee5a6f', name: 'Watermelon' },
+    { hex: '#f368e0', name: 'Bright Pink' },
+    { hex: '#ff9f43', name: 'Orange' },
+    { hex: '#0abde3', name: 'Cool Blue' }
+];
+
+// All colors combined
+const allColors = [...lightColors, ...darkColors, ...vividColors];
+
 // Get elements
 const colorCodeDisplay = document.getElementById('colorCode');
 const colorNameDisplay = document.getElementById('colorName');
@@ -39,28 +80,61 @@ function changeBackgroundColor(color, name = 'Custom Color') {
     colorCodeDisplay.textContent = color.toUpperCase();
     colorNameDisplay.textContent = name;
     
+    // Update text color based on background brightness
+    updateTextColor(color);
+    
     // Add to history
     addToHistory(color);
 }
 
-// Function to generate random light color
+// Function to determine if color is dark
+function isColorDark(hex) {
+    // Convert hex to RGB
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    
+    // Calculate perceived brightness
+    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+    return brightness < 128;
+}
+
+// Function to update text color based on background
+function updateTextColor(bgColor) {
+    const card = document.querySelector('.card');
+    if (isColorDark(bgColor)) {
+        card.style.color = '#ffffff';
+        colorCodeDisplay.style.color = '#34495e';
+        colorNameDisplay.style.color = '#4ecdc4';
+    } else {
+        card.style.color = '#2c3e50';
+        colorCodeDisplay.style.color = '#2c3e50';
+        colorNameDisplay.style.color = '#16a085';
+    }
+}
+
+// Function to generate random color from all palettes
 function changeToRandomColor() {
-    const randomColor = lightColors[Math.floor(Math.random() * lightColors.length)];
+    const randomColor = allColors[Math.floor(Math.random() * allColors.length)];
     changeBackgroundColor(randomColor.hex, randomColor.name);
 }
 
 // Function to change to a random light color
 function changeToLightColor() {
-    // Generate a random light color (avoiding purple range)
-    let r, g, b;
-    do {
-        r = Math.floor(Math.random() * 100) + 156; // 156-255 for light colors
-        g = Math.floor(Math.random() * 100) + 156;
-        b = Math.floor(Math.random() * 100) + 156;
-    } while (Math.abs(r - b) < 30 && r > 180 && b > 180 && g < 200); // Avoid purple-ish colors
-    
-    const hexColor = rgbToHex(r, g, b);
-    changeBackgroundColor(hexColor, 'Generated Light Color');
+    const randomColor = lightColors[Math.floor(Math.random() * lightColors.length)];
+    changeBackgroundColor(randomColor.hex, randomColor.name);
+}
+
+// Function to change to a random dark color
+function changeToDarkColor() {
+    const randomColor = darkColors[Math.floor(Math.random() * darkColors.length)];
+    changeBackgroundColor(randomColor.hex, randomColor.name);
+}
+
+// Function to change to a random vivid color
+function changeToVividColor() {
+    const randomColor = vividColors[Math.floor(Math.random() * vividColors.length)];
+    changeBackgroundColor(randomColor.hex, randomColor.name);
 }
 
 // Function to convert RGB to Hex
@@ -168,6 +242,10 @@ document.addEventListener('keydown', (event) => {
         changeToRandomColor();
     } else if (event.key === 'l' || event.key === 'L') {
         changeToLightColor();
+    } else if (event.key === 'd' || event.key === 'D') {
+        changeToDarkColor();
+    } else if (event.key === 'v' || event.key === 'V') {
+        changeToVividColor();
     } else if (event.key === 'c' || event.key === 'C') {
         if (!event.ctrlKey) {
             copyColorCode();
